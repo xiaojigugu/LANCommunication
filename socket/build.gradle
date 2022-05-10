@@ -1,0 +1,7 @@
+apply plugin: 'com.android.library'
+
+apply from: "../version.gradle"
+
+dependencies {
+    api "org.java-websocket:Java-WebSocket:1.5.1"
+}

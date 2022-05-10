@@ -1,0 +1,4 @@
+include ':socket'
+include ':audio'
+include ':app'
+rootProject.name = "LANCommunication"

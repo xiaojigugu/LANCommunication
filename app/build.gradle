@@ -1,0 +1,14 @@
+apply plugin: 'com.android.application'
+
+apply from: "../version.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.junt.communication"
+    }
+}
+
+dependencies {
+    implementation project(":socket")
+    implementation project(":audio")
+}
