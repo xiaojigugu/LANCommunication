@@ -52,18 +52,23 @@ public class AudioEffectController {
      * @param enable true - 开启   false - 关闭
      */
     public void effect(boolean enable) {
-        if (noiseSuppressor != null) {
-            noiseSuppressor.setEnabled(enable);
-            Log.i(TAG, "effect: 噪音抑制=" + enable);
+        try {
+            if (noiseSuppressor != null) {
+                noiseSuppressor.setEnabled(enable);
+                Log.i(TAG, "effect: 噪音抑制=" + enable);
+            }
+            if (acousticEchoCanceler != null) {
+                acousticEchoCanceler.setEnabled(enable);
+                Log.i(TAG, "effect: 回声消除=" + enable);
+            }
+            if (automaticGainControl != null) {
+                automaticGainControl.setEnabled(enable);
+                Log.i(TAG, "effect: 自动增强=" + enable);
+            }
+        } catch (Throwable e) {
+            Log.e(TAG, "effect: 操作音效失败" + e.getMessage());
         }
-        if (acousticEchoCanceler != null) {
-            acousticEchoCanceler.setEnabled(enable);
-            Log.i(TAG, "effect: 回声消除=" + enable);
-        }
-        if (automaticGainControl != null) {
-            automaticGainControl.setEnabled(enable);
-            Log.i(TAG, "effect: 自动增强=" + enable);
-        }
+
     }
 
     /**

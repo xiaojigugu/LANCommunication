@@ -4,6 +4,9 @@ import android.media.AudioFormat;
 import android.media.MediaFormat;
 import android.media.MediaRecorder;
 
+/**
+ * 编解码配置信息
+ */
 public class EncoderConfig {
     public static final int AUDIO_FORMAT = AudioFormat.ENCODING_PCM_16BIT;
     /**

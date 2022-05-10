@@ -1,4 +1,5 @@
 # 局域网语音通话
+
 ```text
 通过AudioRecord进行PCM音频数据录制
 对PCM数据进行音效处理（噪音抑制、回声消除、自动增强，由于不同手机的处理机制不同，此功能不一定生效）
@@ -10,11 +11,12 @@
 
 ## DEMO使用流程
 
-1. 准备两台Android设备并分别安装本项目导出apk
-2. 启动后授予录音权限
-3. 分别填入另一台手机的内网ip（本机内网ip在界面顶部显示）
-4. 分别点击 `连接服务` 按钮，此时可见已连接字样
-5. 分别点击`开启通话`按钮，此时音频通道已建立并可进行通话
+1. 准备两台Android设备,连接至同一WIFI
+2. 分别安装本项目导出apk
+3. 启动后授予录音权限
+4. 分别填入另一台手机的内网ip（本机内网ip在界面顶部显示）
+5. 分别点击 `连接服务` 按钮，此时可见已连接字样
+6. 分别点击`开启通话`按钮，此时音频通道已建立并可进行通话
 
 ## 模块
 
@@ -37,9 +39,22 @@ EncoderConfig.class - 主要音频编解码配置
 UDP通信模块
 ```
 
-## 解码
+## 注意事项
 
->解码注意事项 - csd_0
+> 播放声音大小
+
+```
+ 默认以最大音量播放,调大手机媒体音量,关闭静音模式,
+```
+
+```java
+        //MainActivity#onCreate(),调整为最大音量
+        AudioManager audioManager=(AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),1);
+```
+
+> 解码注意事项 - csd_0
+
 ```
 解码时注意需要设置 `csd_0` 参数,此参数为MediaCodec特有,格式为:
 AAC Profile 5bits | 采样率 4bits | 声道数 4bits | 其他 3bits |

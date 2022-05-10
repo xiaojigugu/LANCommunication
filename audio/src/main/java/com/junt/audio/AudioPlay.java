@@ -1,7 +1,5 @@
 package com.junt.audio;
 
-import android.content.Context;
-import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.util.Log;
@@ -32,6 +30,7 @@ public class AudioPlay {
             audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, EncoderConfig.SAMPLE_RATE,
                     EncoderConfig.CHANNEL_CONFIG_OUT, EncoderConfig.AUDIO_FORMAT, minSize * 4, AudioTrack.MODE_STREAM);
             audioTrack.setStereoVolume(AudioTrack.getMaxVolume(), AudioTrack.getMaxVolume());
+
             audioDecoder = new AudioDecoder(new OnReceiveDataListener() {
                 @Override
                 public void onReceive(byte[] data, int offset) {
